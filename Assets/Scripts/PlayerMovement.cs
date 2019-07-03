@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
 
     Rigidbody2D rigidBody;
-    Vector2 change;
+    Vector3 change;
     Animator animator;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        change = Vector2.zero;
+        change = Vector3.zero;
         change.x = Input.GetAxis("Horizontal");
         change.y = Input.GetAxis("Vertical");
         UpdateAnimationAndMove();
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateAnimationAndMove()
     {
-        if (change != Vector2.zero)
+        if (change != Vector3.zero)
         {
             MoveCharacter();
             animator.SetFloat("moveX", change.x);
@@ -43,6 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCharacter()
     {
-        rigidBody.MovePosition(rigidBody.position + change * speed * Time.deltaTime);
+        rigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
     }
 }
