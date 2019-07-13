@@ -17,6 +17,16 @@ public class meleeEnemyMovement : MonoBehaviour
 
     //facing
     public GameObject enemyGraphic;
+    bool canFlip = true;
+    bool facingRight = false;
+    float flipTime = 5f;
+    float nextFlipTime = 0f;
+
+    //attacking
+    public float chargeTime;
+    float startChargeTime;
+    bool charging;
+    Rigidbody2D enemyRB;
 
     public float radius;
     // Start is called before the first frame update
